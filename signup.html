@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AuraPaintings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="images\logo.png" alt="AuraPaintings">
+                <!-- Add your logo here -->
+                <!-- <h2>AuraPaintings</h2> -->
+
+            </div>
+            <div class="nav-links">
+                
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Up Form -->
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Create an Account</h2>
+            <p>Join AuraPaintings to find the perfect painter for your project</p>
+        </div>
+
+        <!-- Google Sign Up Button - TOP -->
+        <button type="button" class="btn-google" onclick="handleGoogleSignup()" style="margin-bottom: 1.5rem;">
+            <i class="fab fa-google"></i> Continue with Google
+        </button>
+
+        <div class="divider">
+            <span>Or sign up with email</span>
+        </div>
+
+        <form id="signupForm" onsubmit="handleSignup(event)">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullname">Full Name <span class="required">*</span></label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Phone (Optional) -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number (optional)">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" placeholder="Create a password" required minlength="8">
+                <small style="color: var(--text-light); font-size: 0.8rem;">Minimum 8 characters</small>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                <small id="password-match" style="color: var(--danger); font-size: 0.8rem; display: none;">Passwords do not match</small>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <input type="checkbox" id="terms" required style="width: auto;">
+                <label for="terms" style="display: inline; margin: 0;">I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a> <span class="required">*</span></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Sign Up</button>
+
+            <div class="signup-link">
+                Already have an account? <a href="login.html">Sign in</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="find-painters.html">Find Painters</a></li>
+                        <li><a href="#">Become a Painter</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@aurapaintings.com</li>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Goa, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AuraPaintings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Password confirmation validation
+        document.getElementById('confirm-password').addEventListener('keyup', function() {
+            var password = document.getElementById('password').value;
+            var confirm = this.value;
+            var matchMsg = document.getElementById('password-match');
+            
+            if (password !== confirm) {
+                matchMsg.style.display = 'block';
+                this.style.borderColor = 'var(--danger)';
+            } else {
+                matchMsg.style.display = 'none';
+                this.style.borderColor = 'var(--success)';
+            }
+        });
+
+        document.getElementById('password').addEventListener('keyup', function() {
+            var confirm = document.getElementById('confirm-password').value;
+            if (confirm) {
+                var password = this.value;
+                var matchMsg = document.getElementById('password-match');
+                
+                if (password !== confirm) {
+                    matchMsg.style.display = 'block';
+                    document.getElementById('confirm-password').style.borderColor = 'var(--danger)';
+                } else {
+                    matchMsg.style.display = 'none';
+                    document.getElementById('confirm-password').style.borderColor = 'var(--success)';
+                }
+            }
+        });
+
+        // Handle signup form submission
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            var password = document.getElementById('password').value;
+            var confirm = document.getElementById('confirm-password').value;
+            
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+            
+            // Collect form data
+            var formData = {
+                fullname: document.getElementById('fullname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+            
+            console.log('Signup attempt:', formData);
+            
+            // For demo purposes
+            alert('Account created successfully! Please check your email to verify.');
+            window.location.href = 'login.html';
+        }
+
+        function handleGoogleSignup() {
+            console.log('Google signup clicked');
+            alert('Continue with Google - This would open Google OAuth');
+        }
+    </script>
+</body>
+</html>

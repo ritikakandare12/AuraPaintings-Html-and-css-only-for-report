@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh Kumar - Painter Profile | AuraPaintings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Logo - Left on desktop, Center on mobile -->
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="images/logo.png" alt="AuraPaintings" onerror="this.style.display='none'; this.parentElement.innerHTML='<h2>AuraPaintings</h2>';">
+                <h2 style="display: none;">AuraPaintings</h2>
+            </a>
+        </div>
+        
+        <!-- Desktop Navigation Links (Visible only on desktop) -->
+        <div class="desktop-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="find-painters.html">Find Painters</a>
+            <a href="become-painter.html">Become a Painter</a>
+            <!-- <a href="color-library.html">Color Library</a> -->
+            <a href="about.html">About Us</a>
+            <!-- <a href="contact.html">Contact</a> -->
+        </div>
+        
+        <!-- Auth Buttons - Right (Visible on desktop) -->
+        <div class="auth-buttons desktop-only">
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        
+        <!-- Hamburger Menu - Right on mobile (Hidden on desktop) -->
+        <div class="hamburger-menu mobile-only" id="hamburgerMenu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Navigation Menu (Slide-out from right) -->
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+        <h3>Menu</h3>
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+    </div>
+    
+    <ul class="mobile-nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="find-painters.html"><i class="fas fa-search"></i> Find Painters</a></li>
+        <li><a href="become-painter.html"><i class="fas fa-brush"></i> Become a Painter</a></li>
+        <!-- <li><a href="color-library.html"><i class="fas fa-palette"></i> Color Library</a></li> -->
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <!-- <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li> -->
+    </ul>
+    
+    <div class="mobile-nav-footer">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+</div>
+
+<!-- Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Back Link -->
+        <div style="padding: 2rem 0 1rem;">
+            <a href="find-painters.html" style="text-decoration: none; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-arrow-left"></i> Back to Find Painters
+            </a>
+        </div>
+
+        <!-- Painter Profile Header -->
+        <div class="profile-header">
+            <div class="profile-header-left">
+                <div class="profile-avatar-large">
+                    <img src="images/painters/rajesh-kumar.jpg" alt="Rajesh Kumar" onerror="this.src='https://ui-avatars.com/api/?name=Rajesh+Kumar&background=2F6FD6&color=fff&size=200'">
+                </div>
+                <div>
+                    <h1 class="profile-name">Rajesh Kumar</h1>
+                    <p class="profile-specialty"><i class="fas fa-brush"></i> Interior & Exterior Specialist</p>
+                    <div class="profile-rating-large">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.8 (124 reviews)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-header-right">
+                <div class="profile-price-tag">
+                    <span class="price-label">Hourly Rate</span>
+                    <span class="price-value">₹500 - ₹800</span>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary btn-large" onclick="bookNow('rajesh')">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </button>
+                    <button class="btn-whatsapp-large" onclick="whatsappChat('rajesh')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content Grid -->
+        <div class="profile-grid">
+            <!-- Left Column -->
+            <div class="profile-left">
+                <!-- About Section -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-user-circle"></i> About Me</h3>
+                    <p>I am a professional painter with over 8 years of experience in interior and exterior painting. I specialize in residential and commercial projects, delivering high-quality finishes with attention to detail. I use premium paints and ensure clean, timely service.</p>
+                </div>
+
+                <!-- Experience & Expertise -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-certificate"></i> Experience & Expertise</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> 8+ years of professional painting experience</li>
+                        <li><i class="fas fa-check-circle"></i> Specialized in interior wall painting</li>
+                        <li><i class="fas fa-check-circle"></i> Exterior waterproofing and texture</li>
+                        <li><i class="fas fa-check-circle"></i> Cabinet refinishing and restoration</li>
+                        <li><i class="fas fa-check-circle"></i> POP (Plaster of Paris) work</li>
+                        <li><i class="fas fa-check-circle"></i> Color consultation and matching</li>
+                    </ul>
+                </div>
+
+                <!-- Service Areas -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-map-marked-alt"></i> Service Areas</h3>
+                    <div class="service-areas">
+                        <span class="area-tag">Candolim</span>
+                        <span class="area-tag">Calangute</span>
+                        <span class="area-tag">Baga</span>
+                        <span class="area-tag">Arpora</span>
+                        <span class="area-tag">Saligao</span>
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-light);">
+                        <i class="fas fa-info-circle"></i> Willing to travel up to 15km from Candolim
+                    </p>
+                </div>
+
+                <!-- Availability -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-clock"></i> Availability</h3>
+                    <table class="availability-table">
+                        <tr>
+                            <td>Monday - Friday</td>
+                            <td>8:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>9:00 AM - 4:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>Closed</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 1rem; color: var(--success);">
+                        <i class="fas fa-circle"></i> Currently Available
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="profile-right">
+                <!-- Portfolio/Gallery -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-images"></i> My Works</h3>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <img src="images\workimage\1.b.-Purple-and-white.jpg" alt="Living room painting">
+                            <!-- <div class="portfolio-overlay"></div> -->
+                        </div>
+                        <div class="portfolio-item">
+                            <img src="images\workimage\images.jpg" alt="Exterior painting">
+                            <!-- <div class="portfolio-overlay"></div> -->
+                        </div>
+                        <div class="portfolio-item">
+                            <img src="images\workimage\product-jpeg-1000x1000.jpg"alt="Cabinet painting">
+                            <!-- <div class="portfolio-overlay"></div> -->
+                        </div>
+                        <div class="portfolio-item">
+                            <img src="images\workimage\product-jpeg-1000x1000.webp" alt="Bedroom painting">
+                            <!-- <div class="portfolio-overlay"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-star"></i> Customer Reviews (124)</h3>
+                    
+                    <!-- Review Summary -->
+                    <div class="review-summary">
+                        <div class="summary-stats">
+                            <div class="average-rating">4.8</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div>124 reviews</div>
+                        </div>
+                        <div class="rating-bars">
+                            <div class="rating-bar-item">
+                                <span>5 ★</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 85%"></div>
+                                </div>
+                                <span>85%</span>
+                            </div>
+                            <div class="rating-bar-item">
+                                <span>4 ★</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 10%"></div>
+                                </div>
+                                <span>10%</span>
+                            </div>
+                            <div class="rating-bar-item">
+                                <span>3 ★</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 3%"></div>
+                                </div>
+                                <span>3%</span>
+                            </div>
+                            <div class="rating-bar-item">
+                                <span>2 ★</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 1%"></div>
+                                </div>
+                                <span>1%</span>
+                            </div>
+                            <div class="rating-bar-item">
+                                <span>1 ★</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 1%"></div>
+                                </div>
+                                <span>1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Individual Reviews -->
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">PK</div>
+                                <div>
+                                    <div class="reviewer-name">Priya K.</div>
+                                    <div class="review-date">2 weeks ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Excellent work! Rajesh painted our entire living room and did a fantastic job. Very professional and clean. Highly recommend!</p>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">AS</div>
+                                <div>
+                                    <div class="reviewer-name">Arjun S.</div>
+                                    <div class="review-date">1 month ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Great experience. Showed up on time, completed the work as promised, and cleaned up afterwards. Will hire again.</p>
+                        </div>
+
+                        <!-- <div class="review-item">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">ML</div>
+                                <div>
+                                    <div class="reviewer-name">Meera L.</div>
+                                    <div class="review-date">2 months ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="review-text">Good quality work. The color consultation was very helpful. Slightly delayed but communicated well.</p>
+                        </div> -->
+                    </div>
+
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <button class="btn btn-outline">View All Reviews</button>
+                    </div>
+                </div>
+
+                <!-- Similar Painters -->
+                <div class="profile-card">
+                    <h3><i class="fas fa-users"></i> Similar Painters</h3>
+                    <div class="similar-painters">
+                        <div class="similar-item">
+                            <img src="https://ui-avatars.com/api/?name=Amit+Patil&background=2F6FD6&color=fff&size=50" alt="Amit Patil">
+                            <div>
+                                <div class="similar-name">Amit Patil</div>
+                                <div class="similar-rating">4.9 ★ (98 reviews)</div>
+                            </div>
+                            <button class="btn-small" onclick="viewProfile('amit')">View</button>
+                        </div>
+                        <div class="similar-item">
+                            <img src="https://ui-avatars.com/api/?name=Suresh+Naik&background=2F6FD6&color=fff&size=50" alt="Suresh Naik">
+                            <div>
+                                <div class="similar-name">Suresh Naik</div>
+                                <div class="similar-rating">4.7 ★ (156 reviews)</div>
+                            </div>
+                            <button class="btn-small" onclick="viewProfile('suresh')">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="find-painters.html">Find Painters</a></li>
+                        <li><a href="#">Become a Painter</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@aurapaintings.com</li>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Goa, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AuraPaintings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

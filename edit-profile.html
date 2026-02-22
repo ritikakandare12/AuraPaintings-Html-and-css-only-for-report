@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - AuraPaintings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar (same as above with logged in state) -->
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="images/logo.png" alt="AuraPaintings" onerror="this.style.display='none'; this.parentElement.innerHTML='<h2>AuraPaintings</h2>';">
+                <h2 style="display: none;">AuraPaintings</h2>
+            </a>
+        </div>
+        
+        <!-- Hamburger Menu (for mobile) -->
+        <div class="hamburger-menu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="find-painters.html">Find Painters</a>
+            <a href="become-painter.html">Become a Painter</a>
+            
+            <!-- Show these when logged OUT -->
+            <div class="nav-buttons" id="loggedOutNav">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            
+            <!-- Show these when logged IN (for painters) -->
+            <div class="nav-buttons" id="loggedInNav" style="display: none;">
+                <div class="profile-dropdown">
+                    <div class="profile-trigger" onclick="toggleProfileDropdown()">
+                        <img src="images/default-avatar.png" alt="Profile" class="profile-avatar-small" id="profileAvatar">
+                        <span class="profile-name-small" id="profileName">Rajesh K.</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="profile-dropdown-menu" id="profileDropdown">
+                        <div class="dropdown-header">
+                            <img src="images/default-avatar.png" alt="Profile" id="dropdownAvatar">
+                            <div class="dropdown-header-info">
+                                <h4 id="dropdownName">Rajesh Kumar</h4>
+                                <p id="dropdownEmail">rajesh@example.com</p>
+                            </div>
+                        </div>
+                        <ul class="dropdown-menu-items">
+                            <li><a href="painter-profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                            <li><a href="edit-profile.html"><i class="fas fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="my-bookings.html"><i class="fas fa-calendar-check"></i> My Bookings</a></li>
+                            <li><a href="portfolio.html"><i class="fas fa-images"></i> Portfolio</a></li>
+                            <li><a href="reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+                            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="profile-edit-container">
+            <div class="profile-edit-header">
+                <h2>Edit Profile</h2>
+                <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="profile-edit-tabs">
+                <button class="tab-btn active" onclick="switchTab('basic')">Basic Info</button>
+                <button class="tab-btn" onclick="switchTab('professional')">Professional</button>
+                <button class="tab-btn" onclick="switchTab('services')">Services & Areas</button>
+                <button class="tab-btn" onclick="switchTab('account')">Account</button>
+            </div>
+            
+            <!-- Basic Info Tab -->
+            <div id="basic-tab" class="tab-pane active">
+                <div class="profile-photo-upload">
+                    <div class="profile-photo-preview">
+                        <img src="images/default-avatar.png" alt="Profile" id="profilePreview">
+                    </div>
+                    <div>
+                        <label class="upload-btn">
+                            <i class="fas fa-camera"></i> Change Photo
+                            <input type="file" accept="image/*" style="display: none;" onchange="previewImage(this)">
+                        </label>
+                        <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 0.5rem;">JPG or PNG, max 2MB</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" value="Rajesh Kumar" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" value="rajesh.kumar@example.com" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" value="+91 9876543210" placeholder="Enter your WhatsApp number">
+                </div>
+                
+                <div class="form-group">
+                    <label>About Me</label>
+                    <textarea rows="4">I am a professional painter with over 8 years of experience in interior and exterior painting. I specialize in residential and commercial projects.</textarea>
+                </div>
+            </div>
+            
+            <!-- Professional Tab -->
+            <div id="professional-tab" class="tab-pane">
+                <div class="form-group">
+                    <label>Years of Experience</label>
+                    <select>
+                        <option>0-1 years</option>
+                        <option>1-3 years</option>
+                        <option>3-5 years</option>
+                        <option selected>5-10 years</option>
+                        <option>10+ years</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Hourly Rate (₹)</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="number" value="500" placeholder="Min">
+                        <input type="number" value="800" placeholder="Max">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Specializations</label>
+                    <div class="specialization-grid">
+                        <!-- Same checkboxes as registration -->
+                        <div class="specialization-item">
+                            <input type="checkbox" checked> <label>Interior Painting</label>
+                        </div>
+                        <div class="specialization-item">
+                            <input type="checkbox"> <label>Exterior Painting</label>
+                        </div>
+                        <!-- Add more -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services & Areas Tab -->
+            <div id="services-tab" class="tab-pane">
+                <div class="form-group">
+                    <label>Service Areas</label>
+                    <div class="service-areas-grid">
+                        <div class="service-area-item">
+                            <input type="checkbox" checked> <label>Candolim</label>
+                        </div>
+                        <div class="service-area-item">
+                            <input type="checkbox" checked> <label>Calangute</label>
+                        </div>
+                        <!-- Add more -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account Tab -->
+            <div id="account-tab" class="tab-pane">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" placeholder="Enter current password">
+                </div>
+                
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" placeholder="Enter new password">
+                </div>
+                
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" placeholder="Confirm new password">
+                </div>
+                
+                <hr style="margin: 2rem 0; border-color: var(--light);">
+                
+                <div class="form-group">
+                    <label style="color: var(--danger);">Danger Zone</label>
+                    <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);">Deactivate Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Same footer -->
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-pane').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePreview').src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function saveProfile() {
+            alert('Profile updated successfully!');
+        }
+    </script>
+</body>
+</html>

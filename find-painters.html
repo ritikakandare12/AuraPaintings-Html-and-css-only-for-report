@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Painters - AuraPaintings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Logo - Left on desktop, Center on mobile -->
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="images/logo.png" alt="AuraPaintings" onerror="this.style.display='none'; this.parentElement.innerHTML='<h2>AuraPaintings</h2>';">
+                <h2 style="display: none;">AuraPaintings</h2>
+            </a>
+        </div>
+        
+        <!-- Desktop Navigation Links (Visible only on desktop) -->
+        <div class="desktop-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="find-painters.html">Find Painters</a>
+            <a href="become-painter.html">Become a Painter</a>
+            <!-- <a href="color-library.html">Color Library</a> -->
+            <a href="about.html">About Us</a>
+            <!-- <a href="contact.html">Contact</a> -->
+        </div>
+        
+        <!-- Auth Buttons - Right (Visible on desktop) -->
+        <div class="auth-buttons desktop-only">
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        
+        <!-- Hamburger Menu - Right on mobile (Hidden on desktop) -->
+        <div class="hamburger-menu mobile-only" id="hamburgerMenu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Navigation Menu (Slide-out from right) -->
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+        <h3>Menu</h3>
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+    </div>
+    
+    <ul class="mobile-nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="find-painters.html"><i class="fas fa-search"></i> Find Painters</a></li>
+        <li><a href="become-painter.html"><i class="fas fa-brush"></i> Become a Painter</a></li>
+        <!-- <li><a href="color-library.html"><i class="fas fa-palette"></i> Color Library</a></li> -->
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <!-- <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li> -->
+    </ul>
+    
+    <div class="mobile-nav-footer">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+</div>
+
+<!-- Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search Section -->
+<div style="padding: 2rem 0;">
+    <h1>Find Painters in Your Area</h1>
+    <p>Search by location to discover local painting professionals</p>
+    
+    <div style="display: flex; gap: 1rem; margin: 2rem 0;">
+        <select style="flex: 1; padding: 1rem 1.25rem; border: 2px solid var(--gray); border-radius: var(--border-radius); font-size: 1.1rem; background-color: var(--white); cursor: pointer;">
+            <option>Select Your Area</option>
+            <option>Candolim</option>
+            <option>Calangute</option>
+            <option>Baga</option>
+            <option>Anjuna</option>
+            <option>Panaji</option>
+            <option>Porvorim</option>
+        </select>
+        <button class="btn btn-primary" onclick="searchPainters()" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Search Painters</button>
+    </div>
+</div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <h3 style="margin-bottom: 1rem;">Filters</h3>
+            <div class="filter-group">
+                <div class="filter-item">
+                    <label>Price Range (per hour)</label>
+                    <input type="range" min="400" max="1200" value="800" step="50" onchange="updatePrice(this.value)">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>₹400</span>
+                        <span>₹<span id="priceValue">800</span></span>
+                        <span>₹1200</span>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <label>Minimum Rating</label>
+                    <select>
+                        <option>Any rating</option>
+                        <option>4.5+ stars</option>
+                        <option>4.0+ stars</option>
+                        <option>3.5+ stars</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Availability</label>
+                    <select>
+                        <option>All painters</option>
+                        <option>Available now</option>
+                        <option>Available today</option>
+                        <option>Available this week</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Results Header -->
+       <!-- Results Header -->
+          <!-- Map View -->
+        <!-- Map View -->
+<div style="margin: 3rem 0; padding: 2rem; background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow);">
+    <h3 style="margin-bottom: 1rem;">Interactive Map View</h3>
+    <p style="color: var(--text-light); margin-bottom: 1rem;">Showing painters in your selected area with service zones</p>
+    
+    <!-- Google Maps Embed -->
+    <div style="width: 100%; height: 400px; border-radius: var(--border-radius); overflow: hidden; border: 1px solid var(--gray);">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d246440.43276864907!2d73.69197958164076!3d15.418293457674267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfba0c33b9f2b9%3A0x8a9e5d8c8b8c8f8!2sGoa!5e0!3m2!1sen!2sin!4v1621234567890!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+    
+    <!-- Map Legend / Painter Locations -->
+    <div style="display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div style="width: 20px; height: 20px; background: #2F6FD6; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></div>
+            <span>Rajesh Kumar (Candolim)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div style="width: 20px; height: 20px; background: #E07856; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></div>
+            <span>Amit Patil (Baga)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div style="width: 20px; height: 20px; background: #6DD4BD; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></div>
+            <span>Suresh Naik (Panaji)</span>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 2rem 0;">
+    <h2>Available Painters (6)</h2>
+    <select style="padding: 0.5rem; border: 1px solid var(--gray); border-radius: var(--border-radius);">
+        <option>Sort by: Recommended</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Rating: Highest First</option>
+    </select>
+</div>
+
+
+
+<!-- Painter Cards -->
+<div class="painter-grid">
+    <!-- Rajesh Kumar -->
+    <div class="painter-card">
+        <div class="painter-profile-header">
+            <div class="painter-avatar">
+                <img src="images/painters/rajesh-kumar.jpg" alt="Rajesh Kumar" onerror="this.src='https://ui-avatars.com/api/?name=Rajesh+Kumar&background=2F6FD6&color=fff&size=128'">
+            </div>
+            <!-- Removed WhatsApp icon from here -->
+        </div>
+        <h3 class="painter-name">Rajesh Kumar</h3>
+        <p class="painter-specialty">Interior & Exterior</p>
+        <p class="painter-rating"><i class="fas fa-star"></i> 4.8 (124 reviews)</p>
+        <p class="painter-location"><i class="fas fa-map-marker-alt"></i> Candolim to Calangute</p>
+        <p class="painter-price">8 years experience | ₹500-800/hr</p>
+        <div class="painter-actions">
+            <button class="btn btn-outline" style="flex: 1;" onclick="viewProfile('rajesh')">View Profile</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="bookNow('rajesh')">Book Now</button>
+        </div>
+        <!-- WhatsApp button back in its original position -->
+        <button class="btn-whatsapp" style="width: 100%; margin-top: 1rem;" onclick="whatsappChat('rajesh')">
+            <i class="fab fa-whatsapp"></i> WhatsApp Chat
+        </button>
+    </div>
+
+    <!-- Amit Patil -->
+    <div class="painter-card">
+        <div class="painter-profile-header">
+            <div class="painter-avatar">
+                <img src="images/painters/amit-patil.jpg" alt="Amit Patil" onerror="this.src='https://ui-avatars.com/api/?name=Amit+Patil&background=2F6FD6&color=fff&size=128'">
+            </div>
+            <!-- Removed WhatsApp icon from here -->
+        </div>
+        <h3 class="painter-name">Amit Patil</h3>
+        <p class="painter-specialty">Residential Painting</p>
+        <p class="painter-rating"><i class="fas fa-star"></i> 4.9 (98 reviews)</p>
+        <p class="painter-location"><i class="fas fa-map-marker-alt"></i> Baga to Anjuna</p>
+        <p class="painter-price">10 years experience | ₹600-900/hr</p>
+        <div class="painter-actions">
+            <button class="btn btn-outline" style="flex: 1;" onclick="viewProfile('amit')">View Profile</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="bookNow('amit')">Book Now</button>
+        </div>
+        <!-- WhatsApp button back in its original position -->
+        <button class="btn-whatsapp" style="width: 100%; margin-top: 1rem;" onclick="whatsappChat('amit')">
+            <i class="fab fa-whatsapp"></i> WhatsApp Chat
+        </button>
+    </div>
+
+    <!-- Suresh Naik -->
+    <div class="painter-card">
+        <div class="painter-profile-header">
+            <div class="painter-avatar">
+                <img src="images/painters/suresh-naik.jpg" alt="Suresh Naik" onerror="this.src='https://ui-avatars.com/api/?name=Suresh+Naik&background=2F6FD6&color=fff&size=128'">
+            </div>
+            <!-- Removed WhatsApp icon from here -->
+        </div>
+        <h3 class="painter-name">Suresh Naik</h3>
+        <p class="painter-specialty">Commercial Projects</p>
+        <p class="painter-rating"><i class="fas fa-star"></i> 4.7 (156 reviews)</p>
+        <p class="painter-location"><i class="fas fa-map-marker-alt"></i> Panaji to Porvorim</p>
+        <p class="painter-price">12 years experience | ₹700-1000/hr</p>
+        <div class="painter-actions">
+            <button class="btn btn-outline" style="flex: 1;" onclick="viewProfile('suresh')">View Profile</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="bookNow('suresh')">Book Now</button>
+        </div>
+        <!-- WhatsApp button back in its original position -->
+        <button class="btn-whatsapp" style="width: 100%; margin-top: 1rem;" onclick="whatsappChat('suresh')">
+            <i class="fab fa-whatsapp"></i> WhatsApp Chat
+        </button>
+    </div>
+</div>
+
+          </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="find-painters.html">Find Painters</a></li>
+                        <li><a href="#">Become a Painter</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@aurapaintings.com</li>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Goa, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AuraPaintings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service - AuraPaintings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="images\logo.png" alt="AuraPaintings">
+                <!-- Add your logo here -->
+                <!-- <h2>AuraPaintings</h2> -->
+
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="find-painters.html">Find Painters</a>
+                <a href="#">Become a Painter</a>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="login.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div style="padding: 2rem 0;">
+            <a href="find-painters.html" style="text-decoration: none; color: var(--primary);">
+                <i class="fas fa-arrow-left"></i> Back to Profile
+            </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <!-- Booking Form -->
+            <div class="booking-form">
+                <h1 style="margin-bottom: 2rem;">Book Painting Service</h1>
+                <p style="margin-bottom: 2rem; color: var(--text-light")>Fill in the details below to request a booking</p>
+
+                <form id="bookingForm" onsubmit="handleBooking(event)">
+                    <div class="form-group">
+                        <label>Service Type <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Select service type</option>
+                            <option>Interior Painting</option>
+                            <option>Exterior Painting</option>
+                            <option>Wall Painting</option>
+                            <option>Commercial Painting</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Date <span class="required">*</span></label>
+                        <input type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Time</label>
+                        <select>
+                            <option>Morning (8 AM - 12 PM)</option>
+                            <option>Afternoon (12 PM - 4 PM)</option>
+                            <option>Evening (4 PM - 8 PM)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Address <span class="required">*</span></label>
+                        <textarea placeholder="Enter complete address including area and landmarks" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Notes</label>
+                        <textarea placeholder="Any specific requirements, color preferences, or special instructions..."></textarea>
+                    </div>
+
+                    <div class="booking-steps">
+                        <h3 style="margin-bottom: 1rem;">What Happens Next?</h3>
+                        <ol>
+                            <li>You submit your booking request</li>
+                            <li>Painter receives WhatsApp notification</li>
+                            <li>Painter contacts you to discuss details</li>
+                            <li>Agree on price and schedule work</li>
+                        </ol>
+                    </div>
+
+                    <div style="margin: 2rem 0; padding: 1rem; background: #f0f9ff; border-radius: var(--border-radius);">
+                        <h4 style="margin-bottom: 0.5rem;">Quick WhatsApp Booking</h4>
+                        <p style="margin-bottom: 1rem;">Prefer to discuss directly? Send your request via WhatsApp for faster communication.</p>
+                        <button type="button" class="btn-whatsapp" style="width: 100%;" onclick="sendWhatsAppQuote()">
+                            <i class="fab fa-whatsapp"></i> Send Quote on WhatsApp
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                        Confirm Booking Request
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                        The painter will receive your request via WhatsApp and will contact you to confirm the booking and discuss final pricing.
+                    </p>
+                </form>
+            </div>
+
+            <!-- Painter Details -->
+            <div style="background: var(--white); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); height: fit-content;">
+                <h2 style="margin-bottom: 1rem;">Painter Details</h2>
+                <div style="padding: 1rem; background: var(--light); border-radius: var(--border-radius);">
+                    <h3 style="color: var(--dark);">Rajesh Kumar</h3>
+                    <p class="painter-price" style="font-size: 1.25rem; margin: 0.5rem 0;">₹500-800/hr</p>
+                    <p><i class="fas fa-star" style="color: #FFD700;"></i> 4.8 (124 reviews)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Candolim to Calangute</p>
+                    <p><i class="fas fa-brush"></i> Interior & Exterior Specialist</p>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">What Happens Next?</h3>
+                    <ol style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li style="margin-bottom: 0.5rem;">You submit your booking request</li>
+                        <li style="margin-bottom: 0.5rem;">Painter receives WhatsApp notification</li>
+                        <li style="margin-bottom: 0.5rem;">Painter contacts you to discuss details</li>
+                        <li style="margin-bottom: 0.5rem;">Agree on price and schedule work</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="find-painters.html">Find Painters</a></li>
+                        <li><a href="#">Become a Painter</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@aurapaintings.com</li>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Goa, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AuraPaintings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
