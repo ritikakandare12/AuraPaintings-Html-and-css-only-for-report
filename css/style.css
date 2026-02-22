@@ -341,7 +341,7 @@ body {
     padding: 6rem 0;
     text-align: center;
     overflow: hidden;
-    min-height: 650px;
+    min-height: 500px;
     display: flex;
     align-items: center;
 }
@@ -368,8 +368,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Much more transparent to show video */
-    background: linear-gradient(135deg, rgba(47, 111, 214, 0.3), rgba(42, 42, 106, 0.4));
+    background: linear-gradient(135deg, rgba(47, 111, 214, 0.4), rgba(42, 42, 106, 0.5));
     z-index: 1;
 }
 
@@ -382,57 +381,22 @@ body {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Search Box */
-.search-box {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 50px;
-    padding: 0.5rem;
-    display: flex;
-    box-shadow: var(--shadow);
-}
-
-.search-box input {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    border-radius: 50px;
-    outline: none;
-    font-size: 1rem;
-}
-
-.search-box button {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 50px;
-    background: var(--primary);
-    color: var(--white);
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.search-box button:hover {
-    background: var(--secondary);
-}
-/* Hero Button Container */
+/* Hero Button */
 .button-container {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
 }
 
-/* Hero Button */
 .btn-hero {
     padding: 1rem 3rem;
     border: none;
@@ -459,52 +423,64 @@ body {
     margin-right: 8px;
 }
 
-/* Optional: Add a second button style if needed */
-.btn-hero-outline {
-    padding: 1rem 3rem;
-    border: 2px solid var(--white);
-    border-radius: 50px;
-    background: transparent;
-    color: var(--white);
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: inline-block;
-    margin-left: 1rem;
-}
-
-.btn-hero-outline:hover {
-    background: var(--white);
-    color: var(--primary);
-    transform: translateY(-2px);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .btn-hero {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 3rem 0 !important;
+        min-height: 400px !important;
     }
     
-    .btn-hero-outline {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-        margin-left: 0.5rem;
+    .hero h1 {
+        font-size: 1.8rem !important;
+        padding: 0 15px;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
+        padding: 0 20px;
+    }
+    
+    .btn-hero {
+        padding: 0.8rem 2rem !important;
+        font-size: 1rem !important;
+        width: 90%;
+        max-width: 280px;
+    }
+    
+    /* Video still visible on mobile - just optimized */
+    .video-background {
+        display: block !important; /* Override any previous display:none */
+    }
+    
+    .video-background video {
+        object-position: center; /* Ensure video is centered */
+    }
+    
+    /* Lighter overlay on mobile for better visibility */
+    .video-overlay {
+        background: linear-gradient(135deg, rgba(47, 111, 214, 0.3), rgba(42, 42, 106, 0.4));
     }
 }
 
-/* If you want two buttons side by side */
-.button-group {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+/* Small phones */
+@media screen and (max-width: 480px) {
+    .hero {
+        min-height: 350px !important;
+        padding: 2.5rem 0 !important;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .btn-hero {
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
 }
 
-/* Hide video on mobile for better performance */
-@media (max-width: 768px) {
+/* Optional: If you want to save bandwidth on very slow connections */
+@media screen and (max-width: 768px) and (prefers-reduced-data: reduce) {
     .video-background {
         display: none;
     }
@@ -512,58 +488,247 @@ body {
     .hero {
         background: linear-gradient(135deg, var(--primary), var(--secondary));
     }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
 }
+
+
 
 /* ===== HOW IT WORKS ===== */
 .how-it-works {
-    padding: 4rem 0;
+    padding: 5rem 0;
     background: var(--white);
 }
 
 .how-it-works h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     font-size: 2.5rem;
     color: var(--dark);
+    font-weight: 700;
+}
+
+.how-it-works .section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .step-card {
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     background: var(--light);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .step-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(47, 111, 214, 0.2);
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover::before {
+    transform: scaleX(1);
 }
 
 .step-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--primary);
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto 1rem;
+    font-size: 2.2rem;
+    margin: 0 auto 1.8rem;
+    box-shadow: 0 10px 20px rgba(47, 111, 214, 0.3);
+    transition: all 0.3s ease;
 }
+
+.step-card:hover .step-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(47, 111, 214, 0.4);
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.step-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1rem;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+/* Tablet (768px - 992px) */
+@media screen and (max-width: 992px) {
+    .how-it-works {
+        padding: 4rem 0;
+    }
+    
+    .steps {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .step-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .step-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile (768px and below) */
+@media screen and (max-width: 768px) {
+    .how-it-works {
+        padding: 3rem 0;
+    }
+    
+    .how-it-works h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem;
+        padding: 0 15px;
+    }
+    
+    .how-it-works .section-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 2rem;
+        padding: 0 20px;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .step-card {
+        padding: 1.8rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .step-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .step-card p {
+        font-size: 0.95rem !important;
+        max-width: 280px;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    .how-it-works {
+        padding: 2.5rem 0;
+    }
+    
+    .how-it-works h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .step-card {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .step-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .step-card p {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Very Small Mobile (360px and below) */
+@media screen and (max-width: 360px) {
+    .how-it-works h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .step-card {
+        padding: 1.2rem 1rem;
+    }
+    
+    .step-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.1rem !important;
+    }
+}
+
+
+
+
+
 
 /* ===== COLOR PALETTES ===== */
 .color-palettes {
@@ -2783,3 +2948,870 @@ body {
         text-align: center;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: var(--white);
+    border: 2px solid var(--secondary);
+}
+
+.btn-secondary:hover {
+    background: transparent;
+    color: var(--secondary);
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: opacity 0.3s;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.9;
+}
+
+.btn-whatsapp i {
+    font-size: 1.2rem;
+}
+
+.btn-google {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.btn-google:hover {
+    background: var(--light);
+}
+
+.btn-google i {
+    color: #DB4437;
+    font-size: 1.2rem;
+}
+
+.btn-register {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--primary);
+    color: var(--white);
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    border: 2px solid var(--primary);
+    box-shadow: 0 5px 15px rgba(47, 111, 214, 0.3);
+}
+
+.btn-register:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(47, 111, 214, 0.4);
+}
+
+.btn-register i {
+    transition: transform 0.3s;
+}
+
+.btn-register:hover i {
+    transform: translateX(8px);
+}
+
+/* Hero Button */
+.btn-hero {
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: inline-block;
+    border: 2px solid var(--primary);
+}
+
+.btn-hero:hover {
+    background: transparent;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.btn-hero i {
+    margin-right: 8px;
+}
+
+.btn-hero-outline {
+    padding: 1rem 3rem;
+    border: 2px solid var(--white);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.btn-hero-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-hero {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .btn-hero-outline {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+    
+    .btn-register {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== COMPREHENSIVE MOBILE RESPONSIVENESS ===== */
+@media screen and (max-width: 768px) {
+    
+    /* General Container */
+    .container {
+        padding: 0 15px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    p {
+        font-size: 0.95rem !important;
+        line-height: 1.5;
+    }
+    
+    /* ===== HERO SECTION ===== */
+    .hero {
+        padding: 3rem 0 !important;
+        min-height: auto !important;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem !important;
+        padding: 0 10px;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
+        padding: 0 15px;
+    }
+    
+    .btn-hero {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works {
+        padding: 2rem 0 !important;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 0 10px;
+    }
+    
+    .step-card {
+        padding: 1.5rem !important;
+    }
+    
+    .step-icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
+    
+    /* ===== COLOR PALETTES ===== */
+    .color-palettes {
+        padding: 2rem 0 !important;
+    }
+    
+    .color-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+        padding: 0 5px;
+    }
+    
+    .color-card {
+        margin-bottom: 0.5rem;
+    }
+    
+    .color-swatch {
+        height: 100px !important;
+    }
+    
+    .color-info {
+        padding: 0.5rem !important;
+    }
+    
+    .color-name {
+        font-size: 0.9rem !important;
+    }
+    
+    .color-hex {
+        font-size: 0.8rem !important;
+    }
+    
+    /* ===== SERVICES SECTION ===== */
+    .services {
+        padding: 2rem 0 !important;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .service-card {
+        height: 200px !important;
+    }
+    
+    .service-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .service-content h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .service-content p {
+        font-size: 0.85rem !important;
+        max-width: 100% !important;
+        padding: 0 10px;
+    }
+    
+    /* ===== WHY CHOOSE US ===== */
+    .why-choose-us {
+        padding: 2rem 0 !important;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 2rem !important;
+        padding: 0 15px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .feature-card {
+        padding: 1rem !important;
+    }
+    
+    .feature-icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .feature-card p {
+        max-width: 100% !important;
+    }
+    
+    /* ===== JOIN PAINTER SECTION ===== */
+    .join-painter {
+        padding: 2rem 0 !important;
+    }
+    
+    .painter-cta {
+        padding: 1.5rem !important;
+        margin: 0 10px;
+    }
+    
+    .painter-cta h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .painter-cta h2::after {
+        width: 50px !important;
+        height: 3px !important;
+    }
+    
+    .cta-subtitle {
+        font-size: 0.95rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        padding: 1rem !important;
+    }
+    
+    .benefit-item {
+        font-size: 0.9rem !important;
+    }
+    
+    .btn-register {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* ===== FIND PAINTERS PAGE ===== */
+    .filters {
+        padding: 1rem !important;
+    }
+    
+    .filter-group {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .filter-item {
+        margin-bottom: 1rem;
+    }
+    
+    .painter-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0 !important;
+    }
+    
+    .painter-card {
+        padding: 1rem !important;
+    }
+    
+    .painter-avatar {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .painter-name {
+        font-size: 1.2rem !important;
+    }
+    
+    .painter-specialty {
+        font-size: 0.9rem !important;
+    }
+    
+    .painter-rating {
+        font-size: 0.9rem !important;
+    }
+    
+    .painter-location {
+        font-size: 0.85rem !important;
+    }
+    
+    .painter-price {
+        font-size: 0.9rem !important;
+    }
+    
+    .painter-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .painter-actions .btn {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    /* Map View */
+    .map-view {
+        margin: 2rem 0 !important;
+        padding: 1rem !important;
+    }
+    
+    .map-view h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .map-view > div:last-child {
+        height: 200px !important;
+    }
+    
+    /* ===== BOOKING PAGE ===== */
+    .booking-form {
+        padding: 1.5rem !important;
+        margin: 1rem auto !important;
+    }
+    
+    .booking-form h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .booking-steps {
+        padding: 1rem !important;
+    }
+    
+    .booking-steps ol {
+        margin-left: 1rem !important;
+    }
+    
+    .booking-steps li {
+        font-size: 0.9rem !important;
+    }
+    
+    /* ===== LOGIN PAGE ===== */
+    .login-container {
+        margin: 2rem 1rem !important;
+        padding: 1.5rem !important;
+        width: auto !important;
+    }
+    
+    .login-header h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .remember-forgot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    /* ===== PAINTER REGISTRATION PAGE ===== */
+    .painter-registration-container {
+        padding: 1.5rem !important;
+        margin: 1rem !important;
+        width: auto !important;
+    }
+    
+    .specialization-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .service-areas-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .account-type-container {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .account-type-option {
+        max-width: 100% !important;
+    }
+    
+    /* ===== PAINTER PROFILE PAGE ===== */
+    .profile-header {
+        flex-direction: column !important;
+        padding: 1.5rem !important;
+        text-align: center !important;
+    }
+    
+    .profile-header-left {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .profile-avatar-large {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .profile-name {
+        font-size: 1.5rem !important;
+    }
+    
+    .profile-header-right {
+        text-align: center !important;
+        width: 100%;
+    }
+    
+    .profile-actions {
+        flex-direction: column !important;
+        width: 100%;
+    }
+    
+    .profile-actions button {
+        width: 100% !important;
+    }
+    
+    .profile-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .review-summary {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+        padding: 2rem 0 1rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        text-align: center;
+    }
+    
+    .footer-section ul {
+        padding: 0;
+    }
+    
+    .contact-info li {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem !important;
+    }
+}
+
+/* Small phones (480px and below) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .color-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .painter-card {
+        padding: 0.8rem !important;
+    }
+    
+    .painter-avatar {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    .whatsapp-icon {
+        font-size: 1.8rem !important;
+    }
+    
+    .btn, 
+    .btn-primary, 
+    .btn-outline {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .login-container {
+        padding: 1rem !important;
+    }
+    
+    .profile-avatar-large {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}
+
+/* Fix for very small devices */
+@media screen and (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .painter-avatar {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .painter-name {
+        font-size: 1rem !important;
+    }
+}
+
+
+
+
+
+/* Form Mobile Fixes */
+@media screen and (max-width: 768px) {
+    .form-group {
+        margin-bottom: 1rem !important;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="password"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 0.7rem !important;
+    }
+    
+    .input-group {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .input-group input {
+        width: 100% !important;
+    }
+    
+    /* Fix for rate inputs */
+    .form-group > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .form-group > div[style*="display: flex"] input {
+        width: 100% !important;
+    }
+}
+
+
+/* Table fixes for mobile */
+@media screen and (max-width: 768px) {
+    .availability-table {
+        font-size: 0.9rem;
+    }
+    
+    .availability-table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 0.3rem 0 !important;
+        border-bottom: none;
+    }
+    
+    .availability-table tr {
+        display: block;
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid var(--light);
+        padding-bottom: 0.5rem;
+    }
+    
+    .availability-table tr:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Fix for service areas */
+@media screen and (max-width: 768px) {
+    .service-areas {
+        justify-content: center;
+    }
+    
+    .area-tag {
+        padding: 0.3rem 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+
+/* Image fixes */
+@media screen and (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .portfolio-item {
+        height: 120px !important;
+    }
+    
+    .portfolio-item img {
+        object-fit: cover;
+    }
+    
+    .painter-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+/* Button spacing fixes */
+@media screen and (max-width: 768px) {
+    .button-group {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        padding: 0 1rem;
+    }
+    
+    .button-group .btn {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .btn-hero-outline {
+        margin-left: 0 !important;
+        margin-top: 0.5rem !important;
+    }
+} 
